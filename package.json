@@ -33,17 +33,19 @@
   "license": "GPL-2.0",
   "dependencies": {
     "@babel/register": "^7.10.5",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
     "express": "^4.17.1",
     "flip-book": "github:devrepo/flip-book-jquery",
     "heroku-ssl-redirect": "0.0.4",
     "html2canvas": "^0.5.0-beta4",
+    "ignore-styles": "^5.0.1",
     "imports-loader": "^0.6.5",
     "jquery": "^3.1.1",
     "pdfjs-dist": "1.7.225",
     "raw-loader": "^0.5.1",
     "three": "^0.81.2",
-    "webpack": "^4.43.0",
-    "ignore-styles": "^5.0.1"
+    "webpack": "^4.43.0"
   },
   "bugs": {
     "url": "https://github.com/iberezansky/flip-book-jquery-example/issues"
@@ -51,8 +53,6 @@
   "homepage": "https://github.com/iberezansky/flip-book-jquery-example#readme",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
