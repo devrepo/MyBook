@@ -42,7 +42,8 @@
     "pdfjs-dist": "1.7.225",
     "raw-loader": "^0.5.1",
     "three": "^0.81.2",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "ignore-styles": "^5.0.1"
   },
   "bugs": {
     "url": "https://github.com/iberezansky/flip-book-jquery-example/issues"
@@ -59,7 +60,6 @@
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "ignore-styles": "^5.0.1",
     "mini-css-extract-plugin": "^0.9.0",
     "replace-in-file-webpack-plugin": "^1.0.6",
     "resolve-url-loader": "^3.1.1",
