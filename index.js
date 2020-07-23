@@ -1,69 +1,84 @@
-import {$} from './src/libs'
+import {$, html2canvas, THREE, PDFJS} from './src/libs'
+import "./styles.css";
 
-window.PDFJS_LOCALE = {
-  pdfJsWorker: 'node_modules/flip-book/js/pdf.worker.js'
-};
+window.jQuery = $;
+/*window.PDFJS_LOCALE = {
+  pdfJsWorker: './flip-book/js/pdf.worker.js'
+};*/
+
 require('flip-book');
 
 
-// // Sample 0 {
+// Sample 0 {
 // $('#container').FlipBook({
 //   pdf: 'books/pdf/FoxitPdfSdk.pdf',
 //   template: {
-//     html: 'node_modules/flip-book/templates/default-book-view.html',
-//     links: [
-//       {
-//         rel: 'stylesheet',
-//         href: 'node_modules/flip-book/css/font-awesome.min.css'
-//       }
-//     ],
+//     html: './flip-book/templates/default-book-view.html',
 //     styles: [
-//       'node_modules/flip-book/css/short-black-book-view.css'
+//       './flip-book/css/short-black-book-view.css'
 //     ],
 //     links: [{
 //       rel: 'stylesheet',
-//       href: 'node_modules/flip-book/css/font-awesome.min.css'
+//       href: './flip-book/css/font-awesome.min.css'
 //     }],
-//     script: 'node_modules/flip-book/js/default-book-view.js'
+//     script: './flip-book/js/default-book-view.js'
 //   }
 // });
 // // }
 //
 // Sample 1 {
 function theKingIsBlackPageCallback(n) {
+  if (n > 10){
+    n = Math.random() * 10;
+    n = Math.floor(n)
+    if (n == 0){ n = 1;}
+  }
   return {
     type: 'image',
-    src: 'books/image/theKingIsBlack/'+(n+1)+'.jpg',
+    src: 'books/images/theKingIsBlack/'+(n+1)+'.jpg',
     interactive: false
   };
 }
 
 $('#container').FlipBook({
   pageCallback: theKingIsBlackPageCallback,
-  pages: 10,
+  pages: 100,
+  controlsProps: {
+    downloadURL: 'books/pdf/FoxitPdfSdk.pdf',
+    actions: {
+      cmdBackward: {
+        code: 37,
+      },
+      cmdForward: {
+        code: 39
+      },
+      cmdSave: {
+        code: 68,
+        flags: 1,
+      },
+      mouseCmdRotate: {
+        enabled: true
+      }
+    }
+  },
   propertiesCallback: function(props) {
     props.cover.color = 0x000000;
+    props.page.depth *= 2;
     return props;
   },
   template: {
-    html: 'node_modules/flip-book/templates/default-book-view.html',
-    links: [
-      {
-        rel: 'stylesheet',
-        href: 'node_modules/flip-book/css/font-awesome.min.css'
-      }
-    ],
+    html: './flip-book/templates/default-book-view.html',
     styles: [
-      'node_modules/flip-book/css/short-white-book-view.css'
+      './flip-book/css/short-white-book-view.css'
     ],
     links: [{
       rel: 'stylesheet',
-      href: 'node_modules/flip-book/css/font-awesome.min.css'
+      href: './flip-book/css/font-awesome.min.css'
     }],
-    script: 'node_modules/flip-book/js/default-book-view.js',
+    script: './flip-book/js/default-book-view.js',
     sounds: {
-      startFlip: 'node_modules/flip-book/sounds/start-flip.mp3',
-      endFlip: 'node_modules/flip-book/sounds/end-flip.mp3'
+      startFlip: './flip-book/sounds/start-flip.mp3',
+      endFlip: './flip-book/sounds/end-flip.mp3'
     }
   }
 });
@@ -128,7 +143,7 @@ $('#container').FlipBook({
 //     interactive: true
 //   };
 // }
-//
+
 // $('#container').FlipBook({
 //   pageCallback: preview,
 //   pages: 10,

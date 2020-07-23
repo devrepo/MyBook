@@ -1,0 +1,28 @@
+<!doctype html><html><head><title>Debugging</title><meta charset="utf-8"><link href="main.css" rel="stylesheet"></head><body><style>body {
+        background-color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        height: 95vh;
+        width: 95%;
+        margin: 20px auto;
+        /*border: 2px solid red;
+        box-shadow: 0 0 5px red;*/
+      }
+      .fullscreen {
+        background-color: #333;
+      }
+      .demo-msg{
+        display: none;
+      }</style><div class="container" id="container"></div><script>var intervalId = setInterval( findIframe, 100);
+      function findIframe(){
+        var iframe = document.querySelector("iframe");
+        if (iframe){
+          var contentLoaded = iframe.contentWindow.document.querySelector(".demo-msg");
+          if (contentLoaded){
+            contentLoaded.style.display = "none";
+            clearInterval(intervalId);
+          }
+        }
+      }</script><script src="main.js"></script><script src="main.worker.js"></script></body></html>
